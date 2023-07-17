@@ -1,0 +1,5 @@
+types-requests
+argparse
+requests
+pytz
+
