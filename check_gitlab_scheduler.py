@@ -159,10 +159,10 @@ in pending state (with --pending-timeout). It can also check if a Pipeline's
 last execution happened longer than a specified amount of time (--last-run)""",
         formatter_class=RawDescriptionHelpFormatter,
     )
-    parser.add_argument("-u", "--gitlab_url", dest="gitlab_url")
-    parser.add_argument("-p", "--projectid", dest="project_id")
-    parser.add_argument("-s", "--schedulerid", dest="scheduler_id")
-    parser.add_argument("-t", "--token")
+    parser.add_argument("-u", "--gitlab_url", dest="gitlab_url", required=True)
+    parser.add_argument("-p", "--projectid", dest="project_id", required=True)
+    parser.add_argument("-s", "--schedulerid", dest="scheduler_id", required=True)
+    parser.add_argument("-t", "--token", dest="token", required=True)
     parser.add_argument(
         "-o",
         "--pending-timeout",
