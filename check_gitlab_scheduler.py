@@ -55,9 +55,8 @@ def check_gitlab_scheduler(
     try:
         r = requests.request("GET", url, headers=headers)
         r.raise_for_status()
-    # pylint: disable=unused-variable
-    except requests.exceptions.HTTPError as err:  # noqa: F841
-        print("CRITICAL - {err}")
+    except requests.exceptions.HTTPError as err:
+        print(f"CRITICAL - {err}")
         sys.exit(2)
 
     variables = json.loads(r.text)
@@ -82,8 +81,8 @@ def check_gitlab_scheduler(
                 - last_pipeline_creation_time
             )
             print(
-                "CRITICAL - Pipeline not run since {last_run_since} - Pipeline:"
-                " {description}, Job-Status: {status}, Pipeline-URL: {pipe_url}"
+                f"CRITICAL - Pipeline not run since {last_run_since} - Pipeline:"
+                "{description}, Job-Status: {status}, Pipeline-URL: {pipe_url}"
             )
             sys.exit(2)
         else:
@@ -99,12 +98,12 @@ def check_gitlab_scheduler(
             datetime.datetime.now(datetime.timezone.utc) - last_pipeline_creation_time
         )
         print(
-            "CRITICAL - Pipeline pending since {pipeline_pending_since} - Pipeline:"
-            " {description}, Status: {status}, URL: {pipe_url}"
+            f"CRITICAL - Pipeline pending since {pipeline_pending_since} - Pipeline:"
+            "{description}, Status: {status}, URL: {pipe_url}"
         )
         sys.exit(2)
     else:
-        print("CRITICAL - Pipeline: {description}, Status: {status}, URL: {pipe_url}")
+        print(f"CRITICAL - Pipeline: {description}, Status: {status}, URL: {pipe_url}")
         sys.exit(2)
 
     # check for pending jobs inside the pipeline. they can be pending, too
@@ -128,16 +127,16 @@ def check_gitlab_scheduler(
                         datetime.datetime.now(datetime.timezone.utc) - job_datetime
                     )
                     print(
-                        "CRITICAL - Job pending since {job_pending_since} - Pipeline:"
+                        f"CRITICAL - Job pending since {job_pending_since} - Pipeline:"
                         " {description}, Job: {job['id']}, Job-Status: {job['status']},"
                         " Pipeline-URL: {pipe_url}"
                     )
                     sys.exit(2)
-        except requests.exceptions.HTTPError as err:  # noqa: F841
-            print("CRITICAL - {err}")
+        except requests.exceptions.HTTPError as err:
+            print(f"CRITICAL - {err}")
             sys.exit(2)
 
-    print("OK - Pipeline: {description}, Status: {status}, URL: {pipe_url}")
+    print(f"OK - Pipeline: {description}, Status: {status}, URL: {pipe_url}")
     sys.exit(0)
 
 
