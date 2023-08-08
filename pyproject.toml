@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "check_gitlab_scheduler"
-version = "0.0.1"
+version = "0.0.2"
 description = "Check Gitlab Scheduled Pipelines and its jobs for errors."
 readme = "README.md"
 authors = ["Christopher Grau", "Sebastian Gumprich", "Julian Mühmelt"]
