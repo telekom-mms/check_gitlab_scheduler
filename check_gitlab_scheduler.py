@@ -40,8 +40,8 @@ def check_gitlab_scheduler(
     token: str,
     project_id: str,
     scheduler_id: str,
-    last_run: float,
     pending_timeout: float,
+    last_run: float,
 ) -> str:
     "Checks the schedule"
     url = (
@@ -109,7 +109,8 @@ def check_gitlab_scheduler(
     # check for pending jobs inside the pipeline. they can be pending, too
     if pending_timeout is not None:
         jobs_url = (
-            "https://git.mms-support.de/api/v4/projects/"
+            gitlab_url
+            + "/api/v4/projects/"
             + project_id
             + "/pipelines/"
             + str(pipeline_id)
