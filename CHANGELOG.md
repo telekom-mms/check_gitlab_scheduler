@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.2](https://github.com/telekom-mms/check_gitlab_scheduler/tree/0.0.2) (2023-09-18)
+
+[Full Changelog](https://github.com/telekom-mms/check_gitlab_scheduler/compare/0.0.1...0.0.2)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/telekom-mms/check_gitlab_scheduler/issues/2)
+
 ## [0.0.1](https://github.com/telekom-mms/check_gitlab_scheduler/tree/0.0.1) (2023-08-07)
 
 [Full Changelog](https://github.com/telekom-mms/check_gitlab_scheduler/compare/bbdebb4f51ab1c746fbe7cd773e2f281b92e049b...0.0.1)
